@@ -1,0 +1,18 @@
+%table.table
+  %thead
+    %th 名称
+    %th CPU
+    %th MEM
+    %th 状态
+    %th 实例数
+    %th
+  %tbody
+    - @applications.each do |app|
+      %tr
+        %td= link_to app.id, dashboard_application_path(id: app.id)
+        %td= app.cpus
+        %td
+          = app.mem
+          MiB
+        %td= app.instances
+

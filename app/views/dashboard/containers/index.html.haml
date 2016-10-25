@@ -1,0 +1,14 @@
+= render :partial => "widgets/node_shared_nav"
+
+
+%table.table
+  %thead
+
+  %tbody
+    - @containers.each do |container|
+      %tr
+        %td= container.id
+        %td= container.info["Names"]
+        %td= container.info["Image"]
+        %td= container.info["State"]
+        %td= container.info["Status"]

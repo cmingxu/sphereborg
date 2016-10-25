@@ -1,0 +1,35 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title= Setting.cn_name
+    = stylesheet_link_tag    'dashboard', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'dashboard', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .container-fluid
+      %nav.nav.navbar-inverse.navbar-fixed-top
+        .navbar-header
+          = link_to gly_icon(:globe) + Setting.cn_name, root_path, class: 'navbar-brand', data: { 'no-turbolinks': true }
+
+        %ul.navbar-nav.nav.pull-right
+          %li= link_to current_user.identity, edit_dashboard_user_path(current_user)
+          %li= link_to "退出", session_path, method: :delete
+
+    .container-fluid.dashboard{class: controller_name }
+      .sidebar
+        %ul.nav.nav-sidebar
+          %li{class: nav_li_class('plus') }
+            = link_to gly_icon(:user) + "应用", dashboard_applications_path
+          %li{class: nav_li_class('users') }
+            = link_to gly_icon(:plus) + "集群", dashboard_nodes_path
+          %li
+            = link_to gly_icon(:asterisk) + "设置", ""
+
+        %ul.nav.nav-sidebar
+          %li.active
+      .main_content
+        .col-md-12
+          = render :partial => "layouts/message"
+          = yield

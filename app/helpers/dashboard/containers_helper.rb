@@ -1,0 +1,2 @@
+module Dashboard::ContainersHelper
+end

@@ -1,0 +1,60 @@
+.container.front-page
+  .col-md-8
+    .panel.panel-info.search-panel
+      .panel-body.text-center
+        .input-group
+          %input.form-control{type: 'text', placeholder: 'AMD 极速版'}
+          %span.input-group-addon
+            = gly_icon("search")
+    .list-group
+      - @accessories.each do |a|
+        .list-group-item
+          .list-group-item-heading
+            = a.title
+          .list-group-item-text
+            = truncate a.description, length: 100
+
+  .col-md-4
+    .panel.panel-info
+      .panel-heading 
+        %h4 加入到另外 #{@accessories.total_count} 个配件
+      .panel-body.text-center
+        %button.btn.btn-danger 
+          = gly_icon(:pencil)
+          发布配件
+
+    .panel.panel-info.panel-user-says
+      .panel-heading
+        %h4 听听我们的客户说
+      .panel-body
+        .list-group
+          .list-group-item
+            .list-group-item-heading 
+              = gly_icon(:user)
+              138****3214 说
+            .list-group-item-text xx配件帮我的业务增长了7成
+
+          .list-group-item
+            .list-group-item-heading 
+              = gly_icon(:user)
+              138****3214 说
+            .list-group-item-text xx配件帮我的业务增长了7成xx配件帮我的业务增长了7成xx配件帮我的业务增长了7成xx配件帮我的业务增长了7成xx配件帮我的业务增长了7成
+
+
+          .list-group-item
+            .list-group-item-heading 
+              = gly_icon(:user)
+              138****3214 说
+            .list-group-item-text xx配件帮我的业务增长了7成
+
+          .list-group-item
+            .list-group-item-heading 
+              = gly_icon(:user)
+              138****3214 说
+            .list-group-item-text xx配件帮我的业务增长了7成
+
+          .list-group-item
+            .list-group-item-heading 
+              = gly_icon(:user)
+              138****3214 说
+            .list-group-item-text xx配件帮我的业务增长了7成

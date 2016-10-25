@@ -1,0 +1,13 @@
+
+%ul.nav.nav-tabs
+  %li.actvie{role: "presentation"}
+    = link_to "详情", dashboard_node_path(id: params[:id] || params[:node_id])
+
+  %li{role: "presentation"}
+    = link_to "容器", dashboard_node_containers_path(node_id: params[:id] || params[:node_id])
+
+  %li{role: "presentation"}
+    = link_to "镜像", dashboard_node_images_path(node_id: params[:id] || params[:node_id])
+
+  %li{role: "presentation"}
+    %a{href: "#"} 网络

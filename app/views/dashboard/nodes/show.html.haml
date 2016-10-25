@@ -1,0 +1,13 @@
+= render :partial => "widgets/node_shared_nav"
+
+%table.table
+  %thead
+    %th Key
+    %th Value
+
+  %tbody
+    - @info.each do |k, v|
+      %tr
+        %td= k
+        %td= v
+

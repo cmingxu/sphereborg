@@ -1,0 +1,16 @@
+= @application.id
+= @application.cpus
+= @application.mem
+= @application.id
+
+%table.table
+  %thead
+    %th ID
+    %th SlaveID
+    %th Host
+  %tbody 
+    - @application.tasks.each do |task|
+      %tr
+        %td= task.id
+        %td= task.host
+

@@ -1,0 +1,10 @@
+%table.table
+  %thead
+    %th 名称
+    %th IP
+    %th
+  %tbody
+    - @nodes.each do |node|
+      %tr
+        %td= link_to node.ip, dashboard_node_path(id: node.id)
+        %td= node.ip

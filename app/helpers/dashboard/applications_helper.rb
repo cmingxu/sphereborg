@@ -1,0 +1,2 @@
+module Dashboard::ApplicationsHelper
+end
