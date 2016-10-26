@@ -21,6 +21,8 @@
       .sidebar
         %ul.nav.nav-sidebar
           %li{class: nav_li_class('plus') }
+            = link_to gly_icon(:home) + "首页", dashboard_path
+          %li{class: nav_li_class('plus') }
             = link_to gly_icon(:user) + "应用", dashboard_applications_path
           %li{class: nav_li_class('users') }
             = link_to gly_icon(:plus) + "集群", dashboard_nodes_path
