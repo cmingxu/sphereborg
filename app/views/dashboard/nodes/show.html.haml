@@ -1,13 +1,18 @@
-= render :partial => "widgets/node_shared_nav"
-
-%table.table
-  %thead
-    %th Key
-    %th Value
-
-  %tbody
-    - @info.each do |k, v|
-      %tr
-        %td= k
-        %td= v
+.panel.panel-info
+  .panel-heading
+    %h3.panel-title
+      = @node.id
+  .panel-body
+    = render :partial => "widgets/node_shared_nav"
+    
+    %table.table
+      %thead
+        %th Key
+        %th Value
+    
+      %tbody
+        - @info.each do |k, v|
+          %tr
+            %td= k
+            %td= v
 

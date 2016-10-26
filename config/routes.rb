@@ -17,9 +17,22 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :applications
+    resources :applications do
+      member do
+      %w(restart start scale suspend).each do |action|
+        put action
+      end
+      end
+
+    end
     resources :nodes do
-      resources :containers
+      resources :containers do
+        member do
+          %w(start stop restart pause unpause kill).each do |action|
+            put action
+          end
+        end
+      end
       resources :images
     end
   end

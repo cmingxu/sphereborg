@@ -1,2 +1,13 @@
-%h1 Dashboard::Containers#show
-%p Find me in app/views/dashboard/containers/show.html.haml
+.panel.panel-info
+  .panel-heading
+    %h3.panel-title
+      = @container.id
+
+  .panel-body
+    - {start: "启动",  stop: "停止",  restart: "重启", pause: "暂停", unpause: "恢复", kill: "杀死"}.each do |action, text|
+      = link_to gly_icon(:plus) + text, send("#{action}_dashboard_node_container_path", :id => @container.id), class: 'btn btn-info', data: {method: :put}
+
+    %dl.dl-horizontal
+      - @container.info.each_pair do |k, v|
+        %dt= k
+        %dd= v

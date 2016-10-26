@@ -1,4 +1,4 @@
-class Dashboard::ImagesController < Dashboard::BaseController
+class Dashboard::ImagesController < Dashboard::NodeDetailController
   def index
     @images = Docker::Image.all
   end

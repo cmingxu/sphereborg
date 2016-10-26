@@ -1,10 +1,15 @@
-%table.table
-  %thead
-    %th 名称
-    %th IP
-    %th
-  %tbody
-    - @nodes.each do |node|
-      %tr
-        %td= link_to node.ip, dashboard_node_path(id: node.id)
-        %td= node.ip
+.panel.panel-info
+  .panel-heading
+    %h3.panel-title 节点列表
+
+  .panel-body
+    %table.table
+      %thead
+        %th 名称
+        %th IP
+        %th
+      %tbody
+        - @nodes.each do |node|
+          %tr
+            %td= link_to node.ip, dashboard_node_path(id: node.id)
+            %td= node.ip

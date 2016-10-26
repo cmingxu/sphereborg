@@ -1,18 +1,35 @@
-%table.table
-  %thead
-    %th 名称
-    %th CPU
-    %th MEM
-    %th 状态
-    %th 实例数
-    %th
-  %tbody
-    - @applications.each do |app|
-      %tr
-        %td= link_to app.id, dashboard_application_path(id: app.id)
-        %td= app.cpus
-        %td
-          = app.mem
-          MiB
-        %td= app.instances
+.panel.panel-info
+  .panel-heading
+    %h3.panel-title
+      = @info["name"]
+      (
+      = @info["version"]
+      )
 
+  .panel-body
+    %dl.dl-horizontal
+      - @info.each_pair do |k, v|
+        - next if v.is_a?(Hash)
+        %dt= k
+        %dd= v
+
+    %hr
+    %table.table
+      %thead
+        %th 应用名称
+        %th 所属集群
+        %th 状态
+        %th 容器个数
+        %th 健康状态
+        %th 更新时间
+        %th
+      %tbody
+        - @applications.each do |app|
+          %tr
+            %td= link_to app.id, dashboard_application_path(id: app.id)
+            %td
+              N/A
+            %td= app.tasksStaged != 0 ? "Waiting" : "Running"
+            %td= app.instances
+            %td= app.tasksUnhealthy > 0 ? "Unhealthy" : "Healthy"
+            %td= app.version.to_s

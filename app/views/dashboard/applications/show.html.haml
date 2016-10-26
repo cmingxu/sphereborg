@@ -1,16 +1,42 @@
-= @application.id
-= @application.cpus
-= @application.mem
-= @application.id
+.panel.panel-info
+  .panel-heading
+    %h3.panel-title
+      = @application.id
 
-%table.table
-  %thead
-    %th ID
-    %th SlaveID
-    %th Host
-  %tbody 
-    - @application.tasks.each do |task|
-      %tr
-        %td= task.id
-        %td= task.host
+
+  .panel-body
+    %dl.dl-horizontal
+      - @application.info.each_pair do |k, v|
+        %dt= k
+        %dd= v
+
+    %hr
+      .row
+        - {restart: "重启",  start: "启动",  suspend: "暂停"}.each do |action, text|
+          = link_to gly_icon(:plus) + text, send("#{action}_dashboard_application_path", :id => @application.id), class: 'btn btn-info', data: {method: :put}
+
+    %table.table
+      %thead
+        %th ID
+        %th Mesos
+        %th 状态
+        %th 端口
+        %th 启动时间
+        %th StagedAt
+      %tbody 
+        - @application.tasks.each do |task|
+          %tr
+            %td= task.id
+            %td
+              = task.host
+              (
+              = task.info[:slaveId]
+              )
+            %td= task.info[:state]
+            %td= task.info[:ports]
+            %td= time_ago_in_words(Time.parse(task.startedAt))
+            %td= time_ago_in_words(Time.parse(task.stagedAt))
+
+
+
 

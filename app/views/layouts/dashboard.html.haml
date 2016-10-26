@@ -8,14 +8,14 @@
     = csrf_meta_tags
 
   %body
-    .container-fluid
+    .container-fluid.header
       %nav.nav.navbar-inverse.navbar-fixed-top
         .navbar-header
           = link_to gly_icon(:globe) + Setting.cn_name, root_path, class: 'navbar-brand', data: { 'no-turbolinks': true }
 
-        %ul.navbar-nav.nav.pull-right
-          %li= link_to current_user.identity, edit_dashboard_user_path(current_user)
-          %li= link_to "退出", session_path, method: :delete
+      %ul.navbar-nav.nav.pull-right
+        %li= link_to current_user.identity, edit_dashboard_user_path(current_user)
+        %li= link_to "退出", session_path, method: :delete
 
     .container-fluid.dashboard{class: controller_name }
       .sidebar
@@ -24,6 +24,8 @@
             = link_to gly_icon(:user) + "应用", dashboard_applications_path
           %li{class: nav_li_class('users') }
             = link_to gly_icon(:plus) + "集群", dashboard_nodes_path
+          %li{class: nav_li_class('users') }
+            = link_to gly_icon(:user) + "用户", dashboard_nodes_path
           %li
             = link_to gly_icon(:asterisk) + "设置", ""
 

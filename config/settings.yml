@@ -1,7 +1,7 @@
 default: &default
   sitename: ""
   title: ""
-  cn_name: "上证云平台"
+  cn_name: "云平台"
   domain: ""
   description: ""
   es_url: "http://localhost:9200"

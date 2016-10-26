@@ -1,4 +1,4 @@
 require 'docker'
 
-Docker.url = 'tcp://192.168.31.122:2375'
+Docker.url = 'tcp://192.168.1.155:2375'
 

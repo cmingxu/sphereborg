@@ -1,14 +1,16 @@
-= render :partial => "widgets/node_shared_nav"
+.panel.panel-info
+  .panel-heading
+    %h3.panel-title= @node.id
 
-
-%table.table
-  %thead
-
-  %tbody
-    - @containers.each do |container|
-      %tr
-        %td= container.id
-        %td= container.info["Names"]
-        %td= container.info["Image"]
-        %td= container.info["State"]
-        %td= container.info["Status"]
+  .panel-body
+    = render :partial => "widgets/node_shared_nav"
+    %table.table
+      %thead
+      %tbody
+        - @containers.each do |container|
+          %tr
+            %td= link_to container.id, dashboard_node_container_path(node_id:  @node.id, id: container.id)
+            %td= container.info["Names"]
+            %td= container.info["Image"]
+            %td= container.info["State"]
+            %td= container.info["Status"]
